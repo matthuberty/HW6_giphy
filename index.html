@@ -6,15 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Giphys</title>
+    <!-- HTML, CSS, and Javascript code written by:  Matthew J. Huberty -->
+    <!-- Homework #6 Project for UC Davis Coding Bootcamp, August 11, 2018. -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script> -->
+    <!-- Load your personalized Javascript -->
+    <script src="assets/javascript/app.js"> </script>
 </head>
 
 <body>
-    
+    <div class="container">
+        <h1>Giphys Search!</h1>
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="giphys-view"><!--Buttons--></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <h2>Basic Table</h2>
+                <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col-sm-3">Picture_1</th>
+                            <th scope="col-sm-3">Picture_2</th>
+                            <th scope="col-sm-3">Picture_3</th>
+                        </tr>
+                    </thead>
+                    <tbody id="body">
+                        <!-- Insert movie rows here -->
+                        <!-- <tr id="row1">
+                            <td id="movieTitle"></td>>
+                            <td id="movieYear"></td>
+                            <td id="movieActors"></td>
+                        </tr>
+                        <tr id="row2">
+                            <td id="movieTitle"></td>
+                            <td id="movieYear"></td>
+                            <td id="movieActors"></td>
+                        </tr>
+                        <tr id="row3">
+                            <td id="movieTitle"></td>
+                            <td id="movieYear"></td>
+                            <td id="movieActors"></td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-3" id="giphy-view">
+                <form id="giphy-form">
+                    <label for="giphy-input">Search for a giphy</label>
+                    <input type="text" id="giphy-input">
+                    <br>
+                    <!--This button will trigger the AJAX call for giphys-->
+                    <input id="find-giphy" type="submit" value="Search for a Giphy">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
