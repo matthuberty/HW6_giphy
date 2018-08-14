@@ -1,24 +1,66 @@
 $(document).ready(function () {
     var giphys = ["dogs", "cats", "birds", "fish"];
         
-    var insert = function (movie) {
+    var insert = function (giphy) {
             var body = $("#body");
             var row = $("<tr>");
+            row.addClass("container");
             // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
             //console.log(response);
-            var Title = $("<td>").text(movie.Title);
-            var Year = $("<td>").text(movie.Year);
-            var Actor = $("<td>").text(movie.Actors);
-            // Append the td elements to the new table row
-            row.append(Title, Year, Actor);
-            //row.append(Year);
-            //row.append(Actor);
+            for (var k = 0; k < 10; k++){
+            console.log(giphy.data[0].images.downsized.url);
+                var giphypictd = $("<td>");
+                //giphypictd.addClass("container");
+                var giphyimg = $("<img>")
+                giphyimg.attr("src", giphy.data[k].images.downsized.url);
+                giphyimg.attr("alt", "giphy");
+                var giphyrating = ("Rating:  " + giphy.data[k].rating);
+                //console.log(giphyrating);
+                giphyimg.addClass("sizedgiphy");
+                giphyimg.attr("data-still", giphy.data[k].images.downsized_still.url);
+                giphyimg.attr("data-giphy", giphy.data[k].images.downsized.url);
+                giphyimg.attr("data-animate", "true");
+                giphypictd.append(giphyimg);
+                giphypictd.append("<br>");
+                giphypictd.append(giphyrating);
+                // Append the td elements to the new table row
+                row.append(giphypictd);
+            }
+            
             // Append the table row to the tbody element
             body.append(row);
         }
 
+        var toggleStates = function(){
+            console.log($(this).attr("data-animate"));
+            if ($(this).attr("data-animate") === "true") {
+                $(this).attr("src", $(this).attr("data-still"));
+                console.log($(this).attr("data-still"));
+                $(this).attr("data-animate", "false");
+                console.log($(this).attr("data-animate"));
+            }
+            else{
+                //console.log($(this).attr("data-still"));
+                $(this).attr("src", $(this).attr("data-giphy"));
+                //console.log($(this).attr("data-animate", false));
+                $(this).attr("data-animate", "true");
+            }
+        }
+
+        var displayGiphyInfo = function() {
+            // Returns the movie name from the data-name
+            var giphyName = $(this).attr("data-name");
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giphyName + "&api_key=5hn56bnAGEIKwtTRfhjFAtcU9om4YUlw&limit=10"
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+                insert(response);
+            });
+        }
+
         function renderButtons(){
-            console.log("renderButtons has been called.");
             //Delete the content inside of giphys-view prior to adding new giphys
             //This is necessary.  Otherwise, you will have repeat buttons
             $("#giphys-view").empty();
@@ -36,20 +78,6 @@ $(document).ready(function () {
                 $("#giphys-view").append(newButton);
             }
         }
-        // var searchOMDB = function (movie) {
-        //     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
-        //     $.ajax({
-        //         url: queryURL,
-        //         method: "GET"
-        //     }).then(function (response) {
-        //         console.log(response);
-        //         insert(response);
-        //     });
-        // }
-
-        //searchOMDB("Mr. Nobody");
-        //searchOMDB("Inception");
-        //searchOMDB("Wedding Crashers");
     
         //This function handles events where the Giphy Search button is clicked
         $("#find-giphy").on("click", function(event){
@@ -64,7 +92,13 @@ $(document).ready(function () {
             //call the renderButtons function.  
             //this renders the list of giphys.
             renderButtons();
+            //Clear the text box to allow for another user input
+            document.getElementById("giphy-input").value = "";
         });
+
+        //Event handler - listens for a giphy button click
+        $(document).on("click", ".giphy", displayGiphyInfo);
+        $(document).on("click", ".sizedgiphy", toggleStates);
 
         // Calling the renderButtons function to display the initial list of giphys
         renderButtons();

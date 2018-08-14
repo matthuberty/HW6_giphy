@@ -4,80 +4,19 @@ body{
 }
 
 #giphys-view{
-    height: 30px;
-    width: 30px;
-}
-
-/* #gamepanel{
-    background-color: rgb(255, 150,0);
-    color: white;
-    font-weight: bold;
-    font-size: 22px;
-}
-
-.right-block{
-    position: relative;
-    right: 0;
-    float: right;
-    width: 170px;
-    height: 186px;
-}
-
-.left-block{
-    position: relative;
-    left: 0;
-    width: 170px;
-    height: 186px;
-}
-
-.right-choice{
-    position: relative; 
-    right: 0;
-    float: right;
-
-}
-.prompt{
-    position: relative;
-    left: 0;
-
-}
-
-#timer{
-    position: relative;
-    display: none;
-    margin-bottom: 1em;
-}
-
-.listcontainer{
-    height: 365px;  
-    overflow-y: scroll;
-}
-
-.imagesheader{
-    height: 24px;
-}
-
-#myDiv{
+    height: 100%;
     width: 100%;
-    height: 80%;
-    padding: 50px 0;
-    text-align: center;
-    background-color: lightsalmon;
-    margin-top: 20px;
-    display: block;
+    display: inline-block;
 }
 
-.btn-group{
-    float:  right;
-    margin-right: 6%
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
 }
 
-#quizDiv{
-    display: none;
+.sizedgiphy{
+    height: 200px;
+    width: 175px;
 }
-
-#submit{
-    display: none;
-}
-
- */
